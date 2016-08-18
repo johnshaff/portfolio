@@ -1,4 +1,5 @@
 var movies = [];
+var articleView = {};
 
 function Movie (obj) {
   this.title = obj.title;
@@ -37,5 +38,16 @@ localMovies.forEach(function(obj) {
 //And then appends the returned article to the section.
 movies.forEach(function (obj) {
   console.log('into append');
-  $('#movies').append(obj.articleMaker());
+  $('.movies-div').append(obj.articleMaker());
 });
+
+articleView.handleMainNav = function () {
+  $('.main-nav').on('click', '.tab', function() {
+    $('.portfolio').hide();
+    $('.movies-div').hide();
+    $('.' + $(this).data('content')).fadeIn();
+  });
+  // $('.main-nav .tab:first').click();
+};
+
+articleView.handleMainNav();
