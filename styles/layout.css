@@ -1,10 +1,10 @@
-.pull-left {
+/*.pull-left {
   float: left;
 }
 
 .pull-right {
   float: right;
-}
+}*/
 
 .clearfix::after {
   content: "";

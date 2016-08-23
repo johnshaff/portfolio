@@ -15,7 +15,7 @@ movieView.populateFilters = function() {
   });
 };
 
-movieView.handleAuthorFilter = function() {
+movieView.handleDirectorFilter = function() {
   $('#director-filter').on('change', function() {
     if ($(this).val()) {
       $('article').hide();
@@ -40,27 +40,29 @@ movieView.handleCategoryFilter = function() {
     $('#director-filter').val('');
   });
 };
-
+//
 movieView.handleMainNav = function() {
   $('.main-nav').on('click', '.tab', function(e) {
     $('.tab-content').hide();
     $('#' + $(this).data('content')).fadeIn();
+    // console.log($(this).data('content'));
   });
   $('.main-nav .tab:first').click(); // Sets up the page.
 };
+//
+// movieView.setTeasers = function() {
+//   $('.article-body *:nth-of-type(n+2)').hide(); // Hide's past the second line.
+//
+//   $('#movies').on('click', 'a.read-on', function(e) {
+//     e.preventDefault();
+//     $(this).parent().find('*').fadeIn();
+//     $(this).hide();
+//   });
+// };
 
-movieView.setTeasers = function() {
-  $('.article-body *:nth-of-type(n+2)').hide(); // Hide's past the second line.
-
-  $('#movies').on('click', 'a.read-on', function(e) {
-    e.preventDefault();
-    $(this).parent().find('*').fadeIn();
-    $(this).hide();
-  });
-};
-
+Movie.fetchAll();
 movieView.populateFilters();
+movieView.handleDirectorFilter();
 movieView.handleCategoryFilter();
-movieView.handleAuthorFilter();
 movieView.handleMainNav();
-movieView.setTeasers();
+// movieView.setTeasers();
