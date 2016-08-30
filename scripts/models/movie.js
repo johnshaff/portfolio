@@ -38,7 +38,7 @@ Movie.fetchAll = function() {
     Movie.loadAll(JSON.parse(localStorage.movieReviews));
     Movie.renderIndexPage();
   } else {
-    $.getJSON('scripts/movieRev.json', function(data) {
+    $.getJSON('movieRev.json', function(data) {
       localStorage.setItem('movieReviews', JSON.stringify(data));
       Movie.loadAll(data);
       Movie.renderIndexPage();

@@ -24,6 +24,20 @@
       </article>
     </script>
 
+    <script id="repo-template" class="template" type="text/x-handlebars-template">
+      <h3>Some of my former project repos:</h3>
+      <li>
+        <a href="{{html_url}}" target="_blank"><h3>{{name}}</h3></a>
+        <p>Description: {{description}}</p>
+        <p>Language: {{language}}</p>
+        <p>Created: {{created_at}}</p>
+        <p>Last Updated: {{updated_at}}</p>
+        {{#if watchers_count}}
+        <p>{{watchers_count}} watching this repo</p>
+        {{/if}}
+      </li>
+    </script>
+
   </head>
   <body>
     <header class="site-header clearfix">
@@ -59,29 +73,30 @@
           </ul>
         </div>
       </section>
+
       <section id="projects" class="tab-content">
-        <section>
-          <h3>Some of my former projects:</h3>
-          <ul class="projects-list">
-            <li> <address><a href="https://github.com/mikeybkats/H2">Pub Capture</a></address> </li>
-            <li> <address><a href="https://github.com/johnshaff/bus_mall">Bus Mall</a></address> </li>
-            <li> <address><a href="https://github.com/johnshaff/CampFireCoffee">Campfire Coffee</a></address> </li>
-            <li> <address><a href="https://github.com/johnshaff/chocolate-pizza">Chocolate Pizza</a></address> </li>
-          </ul>
-        </section>
       </section>
+
     </main>
     <footer>
       &copy; 2016 John Shaff
     </footer>
+
+    <script src="githubToken.js"></script>
+
     <!-- Vendor Files -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="vendor/scripts/page.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
+
     <!-- Model Files -->
-    <script src="scripts/movie.js"></script>
+    <script src="scripts/models/repo.js"></script>
+    <script src="scripts/models/movie.js"></script>
+
     <!-- View Files -->
-    <script src="scripts/movieView.js"></script>
+    <script src="scripts/view/movieView.js"></script>
+    <script src="scripts/view/repoView.js"></script>
+
     <!-- Controller Files -->
     <script src="scripts/controllers/homeController.js"></script>
     <script src="scripts/controllers/aboutController.js"></script>
