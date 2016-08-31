@@ -4,8 +4,7 @@
   reposObj.allRepos = [];
 
   reposObj.requestRepos = function(callback) {
-    /* TODO:DONE How would you like to fetch your repos? Someone say AJAX?!
-      Do not forget to call the callback! */
+  $.when(
     $.ajax({
       url: 'https://api.github.com/users/johnshaff/repos' +
         '?per_page=5' +
@@ -13,12 +12,21 @@
       type: 'GET',
       headers: {'Authorization': 'token ' + githubToken},
       success: function(data) {
-        console.log(data);
         reposObj.allRepos = data;
-        console.log(reposObj.allRepos);
         callback();
       }
-    });
+    }),
+    $.ajax({
+      url: 'https://api.github.com/users/johnshaff/followers' +
+        '?per_page=5' +
+        '&sort=updated',
+      type: 'GET',
+      headers: {'Authorization': 'token ' + githubToken},
+      success: function(data) {
+        reposObj.allRepos = data;
+        callback();
+      }
+    }),
   };
 
   reposObj.withTheAttribute = function(myAttr) {
