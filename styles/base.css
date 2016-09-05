@@ -1,0 +1,46 @@
+img {
+  max-width: 100%;
+}
+
+body {
+  line-height: 1.5;
+  font-size: 100%;
+  color: #313131;
+}
+
+article {
+  border-bottom: 2px solid black;
+  margin: -1 -1 -1 -1;
+  padding: -1 -1 -1 -1;
+}
+
+/*TEXT STYLES
+=======================================*/
+p {
+  font-size: 1em;
+}
+
+address {
+  display: inline-block;
+}
+
+/*LINK STYLES
+=======================================*/
+
+a, a:link, a:active {
+  text-decoration: none;
+  color: #777;
+}
+
+a:hover, a:focus {
+  color: #29506D;
+}
+
+a:visited {
+}
+
+section .article-body {
+  margin: 0 0 0 0;
+  border: 0 0 0 0;
+  padding: 0 0 0 0;
+}

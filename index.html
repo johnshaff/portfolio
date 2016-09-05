@@ -1,66 +1,105 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>Porfolio</title>
+    <title>Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="style.css">
-  </head>
+    <link rel="stylesheet" href="vendor/styles/normalize.css">
+    <link rel="stylesheet" href="styles/icons.css">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/modules.css">
 
+    <script id="template" type="text/x-handlebars-template">
+      <article class="clearfix" data-director="{{director}}" data-category="{{category}}">
+        <header>
+          <h1>{{title}}</h1>
+          <div class="byline">
+            By <address><a href="{{imdb}}">{{director}}</a></address>
+          </div>
+        </header>
+        <section class="article-body">{{{synopsis}}} </section>
+        <!-- <a href="#" class="read-on">Read on &rarr;</a> -->
+      </article>
+    </script>
+
+    <script id="repo-template" class="template" type="text/x-handlebars-template">
+      <h3>Some of my former project repos:</h3>
+      <li>
+        <a href="{{html_url}}" target="_blank"><h3>{{name}}</h3></a>
+        <p>Description: {{description}}</p>
+        <p>Language: {{language}}</p>
+        <p>Created: {{created_at}}</p>
+        <p>Last Updated: {{updated_at}}</p>
+        {{#if watchers_count}}
+        <p>{{watchers_count}} watching this repo</p>
+        {{/if}}
+      </li>
+    </script>
+
+  </head>
   <body>
     <header class="site-header clearfix">
       <section class="heading-group-h1">
         <h1>
-          JOHN SHAFF PORTFOLIO!
+          John Shaff Portfolio
         </h1>
-        <h3 class="shaff">EXPERIENCE THE SHAFF</h3>
+        <h2>The shocking power of shaff</h2>
       </section>
-    </header>
-
-    <nav class="main-nav">
-      <!-- Hamburger Menu -->
+      <nav class="main-nav">
+        <!-- Hamburger Icon -->
         <div class="icon-menu"></div>
         <ul>
-          <!-- //HOME BUTTON// -->
-          <li class="tab" data-content="portfolio"><a href="#" class="icon-home"> Home</a></li>
-
-          <!-- //ABOUT BUTTON// -->
-          <li class="tab" data-content="movies-div"><a href="#" class="icon-address-book"> About</a></li>
+          <li class="tab" data-content="movies"><a href="/" class="icon-home"> Home</a></li>
+          <li class="tab" data-content="projects"><a href="/about" class="icon-address-book"> Projects</a></li>
         </ul>
       </nav>
-
+    </header>
     <main>
-      <section class="portfolio">
-        <h3>CodeFellows 201 Projects</h3>
-          <ul class="projects-list">
-            <li> <address><a href="https://github.com/mikeybkats/H2">Pub Capture</a></address> </li>
-            <li> <address><a href="https://github.com/johnshaff/bus_mall">Bus Mall</a></address> </li>
-            <li> <address><a href="https://github.com/johnshaff/CampFireCoffee">Campfire Coffee</a></address> </li>
-            <li> <address><a href="https://github.com/johnshaff/chocolate-pizza">Chocolate Pizza</a></address> </li>
+      <section id="movies" class="tab-content">
+        <div>
+          <ul id="filters">
+            <li>
+              <select id="director-filter">
+                <option value="">-- Filter by Directors --</option>
+              </select>
+            </li>
+            <li>
+              <select id="category-filter">
+                <option value="">-- Filter by Categories --</option>
+              </select>
+            </li>
           </ul>
+        </div>
       </section>
 
-      <div class="movies-div">
-      <h2> Favorite Movies </h2>
+      <section id="projects" class="tab-content">
+      </section>
 
-        <section id="movies">
-          <article class="template">
-            <h1>Movie Title</h1>
-            <h4>Year</h4>
-            <a href="">Imdb Page</a>
-            <p>Synopsis</p>
-          </article>
-        </section>
-      </div>
     </main>
-
     <footer>
       &copy; 2016 John Shaff
     </footer>
 
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-    <script rel="text/js" src="movies.js"></script>
-    <script rel="text/js" src="app.js"></script>
-  </body>
+    <script src="githubToken.js"></script>
 
+    <!-- Vendor Files -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="vendor/scripts/page.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
+
+    <!-- Model Files -->
+    <script src="scripts/models/repo.js"></script>
+    <script src="scripts/models/movie.js"></script>
+
+    <!-- View Files -->
+    <script src="scripts/view/movieView.js"></script>
+    <script src="scripts/view/repoView.js"></script>
+
+    <!-- Controller Files -->
+    <script src="scripts/controllers/homeController.js"></script>
+    <script src="scripts/controllers/aboutController.js"></script>
+    <script src="scripts/controllers/routes.js"></script>
+  </body>
 </html>
