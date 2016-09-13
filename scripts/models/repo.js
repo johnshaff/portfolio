@@ -1,5 +1,7 @@
 (function(module) {
+
   var reposObj = {};
+  console.log(reposObj);
 
   reposObj.allRepos = [];
 
@@ -27,7 +29,7 @@
         callback();
       }
     }),
-  };
+  }; //TODO: I have no idea why this curly brace shows up as an unexpected token in the dev console.
 
   reposObj.withTheAttribute = function(myAttr) {
     return reposObj.allRepos.filter(function(aRepo) {
@@ -36,4 +38,5 @@
   };
 
   module.reposObj = reposObj;
+
 })(window);

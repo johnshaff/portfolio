@@ -2,6 +2,7 @@
   var movieController = {};
 
   movieController.reveal = function() {
+    
     $('.tab-content').hide();
     console.log('movieController just hid some shit');
     $('#movies').fadeIn();

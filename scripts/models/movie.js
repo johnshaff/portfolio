@@ -24,15 +24,6 @@ Movie.loadAll = function(inputData) {
   });
 };
 
-// Movie.loadAll = function(inputData) {
-//   console.log(inputData);
-//   inputData.sort(function(a,b) {
-//     return (new Date(b.year)) - (new Date(a.year));
-//   }).forEach(function(ele) {
-//     Movie.allMovies.push(new Movie(ele));
-//   });
-//  };
-
 Movie.fetchAll = function() {
   if (localStorage.movieReviews) {
     Movie.loadAll(JSON.parse(localStorage.movieReviews));
@@ -45,8 +36,6 @@ Movie.fetchAll = function() {
     });
   }
 };
-
-// Movie.fetchAll();
 
 Movie.renderIndexPage = function(){
   Movie.allMovies.forEach(function (a) {
