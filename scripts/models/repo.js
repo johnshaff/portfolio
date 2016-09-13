@@ -1,32 +1,17 @@
+
 (function(module) {
   var reposObj = {};
 
   reposObj.allRepos = [];
 
   reposObj.requestRepos = function(callback) {
-  $.when(
-    $.ajax({
-      url: 'https://api.github.com/users/johnshaff/repos' +
-        '?per_page=5' +
-        '&sort=updated',
-      type: 'GET',
-      headers: {'Authorization': 'token ' + githubToken},
-      success: function(data) {
-        reposObj.allRepos = data;
-        callback();
-      }
-    }),
-    $.ajax({
-      url: 'https://api.github.com/users/johnshaff/followers' +
-        '?per_page=5' +
-        '&sort=updated',
-      type: 'GET',
-      headers: {'Authorization': 'token ' + githubToken},
-      success: function(data) {
-        reposObj.allRepos = data;
-        callback();
-      }
-    }),
+    $.get('/github/users/johnshaff/repos' +
+           '?per_page=10' +
+           '&sort=updated')
+           .done(function(data) {
+             reposObj.allRepos = data;
+           })
+           .done(callback);
   };
 
   reposObj.withTheAttribute = function(myAttr) {
